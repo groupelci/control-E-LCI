@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "887355543232",
+    "project_id": "control-e-lci",
+    "storage_bucket": "control-e-lci.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887355543232:android:4b129380f128de45952725",
+        "android_client_info": {
+          "package_name": "com.example.elci_control"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887355543232-5un9b8p9t4vg9frlej63lb6569k858am.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZwngCCj3i-jviEAALBWtQrhnVInPbV1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887355543232-5un9b8p9t4vg9frlej63lb6569k858am.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

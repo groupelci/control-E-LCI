@@ -9,7 +9,7 @@ class LoginController extends GetxController {
   TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final formKey = GlobalKey<FormState>();
+  final controlkey = GlobalKey<FormState>();
   final RxBool rememberMe = false.obs;
   final RxString email = ''.obs;
   final RxString password = ''.obs;
@@ -26,7 +26,7 @@ class LoginController extends GetxController {
         // Sign in the user
         final UserCredential userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
         // Check if the email is verified
-        if (userCredential.user!.emailVerified) {
+        //if (userCredential.user!.emailVerified) {
           // Save login info
           await CacheHelper.saveData(key: 'token', value: userCredential.user!.uid);
           // Clear the input fields and show a success message
@@ -34,9 +34,9 @@ class LoginController extends GetxController {
           passwordController.clear();
           CustomSnackbar('Success', 'Login successful', isSuccess: true);
           Get.to(() => BottombarScreen());
-        } else {
-          CustomSnackbar('Error', 'Please verify your email to log in.');
-        }
+       // } else {
+        //  CustomSnackbar('Error', 'Please verify your email to log in.');
+      //  }
       } catch (e) {
         CustomSnackbar('Error', e.toString());
       }

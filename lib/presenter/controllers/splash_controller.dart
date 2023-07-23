@@ -1,12 +1,22 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../views/screens/bottombar_screen.dart';
 import '../../views/screens/started_screen.dart';
+import '../../views/widgets/constant.dart';
 class SplashController extends GetxController {
   @override
   void onReady() {
     super.onReady();
     // Wait for some time and then navigate to the home screen
     Future.delayed(const Duration(seconds: 3), () {
-      Get.off(() =>  StartedScreen());
+      Widget StartScreen;
+      if(token==null){
+        StartScreen= StartedScreen() ;
+      }
+      else{
+        StartScreen= BottombarScreen();
+      }
+      Get.off(() =>  StartScreen);
 
 
     });

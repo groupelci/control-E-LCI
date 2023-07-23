@@ -23,7 +23,7 @@ class StartedScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 30,),
-              Image.asset('assets/images/organisation.png'),
+              Image.asset('assets/images/gestion.png'),
               MyCustomTextWidget(index:1 ,text:'Welcome!' ,),
               const SizedBox(height: 30,),
               MyCustomTextWidget(index:2 ,text:'to the Control App for E-LCI!' ,),
@@ -31,9 +31,9 @@ class StartedScreen extends StatelessWidget {
               MyCustomTextWidget(index:2 ,text:'Your all-in-one solution to ',),
               const SizedBox(height:5,),
               MyCustomTextWidget(index:2 ,text:'manage and control the E-LCI system',),
-              const SizedBox(height:100,),
+              const SizedBox(height:40,),
               CustomButton(
-                  text:'LOGIN' ,
+                  text:'Login' ,
                   onPressed:(){
                     Get.bottomSheet(LoginPopupContainer(), isScrollControlled: true,
                     );
@@ -41,7 +41,8 @@ class StartedScreen extends StatelessWidget {
                   sideColor: buttonColor,
                   onPrimary:Colors.white ,
                   primary:buttonColorWith ),
-              CustomButton(text:'SIGNUP' ,
+              CustomButton(
+                  text:'Signup' ,
                   onPressed:() {
                     Get.bottomSheet(SignupPopupContainer(), isScrollControlled: true,
                     );
@@ -49,7 +50,6 @@ class StartedScreen extends StatelessWidget {
                   sideColor: secondColor,
                   primary: Colors.white,
                   onPrimary:secondColor ),
-
             ],
           ),
         ),

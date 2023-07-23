@@ -30,6 +30,7 @@ class SignupPopupContainer extends StatelessWidget {
               color: primaryColor,
             ),
             type: TextInputType.text,
+            controller: signupController.nameController,
           ),
           const SizedBox(height: 8),
           DefaultTextField(
@@ -39,6 +40,9 @@ class SignupPopupContainer extends StatelessWidget {
               color: primaryColor,
             ),
             type: TextInputType.emailAddress,
+            controller: signupController.mailController,
+            validatorFn: validateEmail,
+
           ),
           const SizedBox(height: 8),
           GetBuilder<SignupController>(
@@ -54,14 +58,15 @@ class SignupPopupContainer extends StatelessWidget {
               suffixFunction: () {
                 signupController.togglePasswordVisibility();
               },
-
             ),
           ),
           const SizedBox(height: 16),
           CustomButton(
             buttomHight: 40.0,
-            onPressed: () {},
-            text: 'SIGNUP',
+            onPressed: ()async{
+              await signupController.signup();
+            },
+            text: 'Signup',
             primary: buttonColor,
             onPrimary: Colors.white,
             sideColor: buttonColor,

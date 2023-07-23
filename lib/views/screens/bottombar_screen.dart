@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../presenter/controllers/bottombar_controller.dart';
@@ -18,16 +19,16 @@ class BottombarScreen extends StatelessWidget {
         builder: (bottomBarController) =>  BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(FontAwesomeIcons.homeUser),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.school_outlined),
-              label: 'New Courses',
+              icon:Icon(FontAwesomeIcons.users) ,
+              label: 'Users',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
+              icon:  Icon(FontAwesomeIcons.person),
+              label: 'Controller',
             ),
           ],
           currentIndex: bottomBarController.selectedIndex,

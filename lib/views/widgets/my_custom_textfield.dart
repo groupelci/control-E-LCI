@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'color.dart';
 class DefaultTextField extends StatelessWidget {
   final Icon prefixIcon;
@@ -40,6 +39,7 @@ class DefaultTextField extends StatelessWidget {
         suffixIcon: suffix != null ? IconButton(onPressed: suffixFunction, icon: Icon(suffix, color: buttonColor),) : null,
         labelText: hintText,
         hintText: hint,
+        labelStyle: customLabelTextStyle, // Set the custom TextStyle here
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
           borderSide:  BorderSide(
@@ -69,7 +69,6 @@ class DefaultTextField extends StatelessWidget {
     );
   }
 }
-
 String? validatePassword(String? value) {
   if (value == null || value.isEmpty) {
     return 'Password is required';
@@ -89,3 +88,9 @@ String? validateEmail(String? value) {
   }
   return null;
 }
+TextStyle customLabelTextStyle = TextStyle(
+  fontFamily: 'GreatVibes',
+  fontSize: 16,
+  fontWeight: FontWeight.normal,
+  color: buttonColor ,
+);

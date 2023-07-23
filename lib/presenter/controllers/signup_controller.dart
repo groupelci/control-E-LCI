@@ -37,10 +37,10 @@ class SignupController extends GetxController {
       final UserCredential userCredential = await auth
           .createUserWithEmailAndPassword(email: email, password: password);
       // Send verification email
-      await userCredential.user!.sendEmailVerification();
+     // await userCredential.user!.sendEmailVerification();
       // Store the user's name in Cloud Firestore
       await FirebaseFirestore.instance
-          .collection('userInformation')
+          .collection('controlInformation')
           .doc(userCredential.user!.uid)
           .set({
         'name': name,
@@ -48,13 +48,15 @@ class SignupController extends GetxController {
       // Update the name field
       await CacheHelper.saveData(key: 'token', value: userCredential.user!.uid);
       CustomSnackbar('Success', 'Registration successful. Please check your email for verification.',isSuccess: true);
+      print('whhhhhhhhhhhhhhhhhheeeeeeeeeeeeeerrrrrrrrrrrrrrrrreeeeeeeeeee');
+      Get.to(() => BottombarScreen());
       // Check if the email is verified
-      if (userCredential.user!.emailVerified) {
-        Get.to(() => BottombarScreen());
-      } else {
-        Get.snackbar('Email Not Verified',
-            'Please verify your email before proceeding.');
-      }
+      // if (userCredential.user!.emailVerified) {
+      //   Get.to(() => BottombarScreen());
+      // } else {
+      //   Get.snackbar('Email Not Verified',
+      //       'Please verify your email before proceeding.');
+      // }
     } catch (e) {
       CustomSnackbar('Error', e.toString());
     }

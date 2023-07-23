@@ -12,7 +12,7 @@ class LoginPopupContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final double containerHeight = MediaQuery.of(context).size.height * 0.4; // Adjust the multiplier as needed
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       height: containerHeight, // You can adjust the height as needed
       decoration:  BoxDecoration(
         color: Colors.white, // Set the background color of the container
@@ -22,7 +22,7 @@ class LoginPopupContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           MyCustomTextWidget(text:'Welcome back !' ,index: 1 ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           DefaultTextField(
             hintText: 'Email',
             prefixIcon: const Icon(
@@ -30,26 +30,31 @@ class LoginPopupContainer extends StatelessWidget {
               color: primaryColor,
             ),
             type: TextInputType.emailAddress,
+            controller: loginController.mailController,
           ),
-          SizedBox(height: 8),
-          DefaultTextField(
-            hintText: 'Password',
-            prefixIcon: const Icon(
-              Icons.lock_outline,
-              color: primaryColor,
+          const SizedBox(height: 8),
+          GetBuilder<LoginController>(
+            init: LoginController(),
+            builder: (loginController) => DefaultTextField(
+              hintText: 'Password',
+              prefixIcon: const Icon(Icons.lock, color: primaryColor),
+              controller: loginController.passwordController,
+              type: TextInputType.visiblePassword,
+              validatorFn: validatePassword,
+              obscuretext: loginController.obscurePassword,
+              suffix: loginController.obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined ,
+              suffixFunction: () {
+                loginController.togglePasswordVisibility();
+              },
             ),
-            type: TextInputType.visiblePassword,
-            obscuretext: true,
           ),
-          SizedBox(height: 16),
+
+          const SizedBox(height: 16),
           CustomButton(
-            buttomHight: 40.0,
-            onPressed: () {
-              if (loginController.formKey.currentState!.validate()) {
-                loginController.login();
-              }
+            onPressed: ()async{
+                await loginController.login();
             },
-            text: 'LOGIN',
+            text: 'Login',
             primary: buttonColor,
             onPrimary: Colors.white,
             sideColor: buttonColor,

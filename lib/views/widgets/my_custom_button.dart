@@ -41,7 +41,7 @@ class CustomButton extends StatelessWidget {
               child: Text(
                 text,
                 style:
-                const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                const TextStyle(fontFamily:'GreatVibes',fontSize: 24, fontWeight: FontWeight.w700),
               ),
             )));
   }

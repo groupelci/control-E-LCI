@@ -22,15 +22,14 @@ class MyCustomTextWidget extends StatelessWidget {
 
     return fontSize;
   }
-
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle;
     switch (index) {
       case 1: // Head
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: getResponsiveFontSize(context, 21),
+          fontFamily: 'GreatVibes',
+          fontSize: getResponsiveFontSize(context, 24),
           fontWeight: FontWeight.w700,
           color:
           // settingscontroller.isDarkMode.value
@@ -41,8 +40,8 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 2://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
-          fontSize:getResponsiveFontSize(context, 15),
+          fontFamily: 'GreatVibes',
+          fontSize:getResponsiveFontSize(context, 20),
           fontWeight: FontWeight.w400,
           color:
           // settingscontroller.isDarkMode.value
@@ -52,7 +51,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 3://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes',
           fontSize: getResponsiveFontSize(context, 12),
           fontWeight: FontWeight.w400,
           color:
@@ -63,7 +62,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 4://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 19),
           fontWeight: FontWeight.w400,
           color:
@@ -74,7 +73,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 5://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 19),
           fontWeight: FontWeight.w400,
           color:
@@ -85,7 +84,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 6://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 20),
           fontWeight: FontWeight.w400,
           color:
@@ -96,7 +95,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 7://head
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize: getResponsiveFontSize(context, 25),
           fontWeight: FontWeight.w700,
           color:
@@ -108,7 +107,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 8://head
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 20),
           fontWeight: FontWeight.w700,
           color: Colors.white,
@@ -118,7 +117,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 9://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 15),
           fontWeight: FontWeight.w400,
           color:
@@ -129,7 +128,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 10://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 12),
           fontWeight: FontWeight.w400,
           color:
@@ -140,7 +139,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 11://head
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 21),
           fontWeight: FontWeight.w700,
           color:
@@ -152,7 +151,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 12://head
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize: getResponsiveFontSize(context, 19),
           fontWeight: FontWeight.w700,
           color:
@@ -164,7 +163,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 13://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize: getResponsiveFontSize(context, 15),
           fontWeight: FontWeight.w400,
           color:
@@ -175,7 +174,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 14://head
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 11),
           fontWeight: FontWeight.w500,
           color:
@@ -188,7 +187,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 15://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize: getResponsiveFontSize(context, 12),
           fontWeight: FontWeight.w400,
           color: Colors.white,
@@ -196,7 +195,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 16://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 15),
           fontWeight: FontWeight.w400,
           color:
@@ -207,7 +206,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 17://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize:getResponsiveFontSize(context, 15),
           fontWeight: FontWeight.w400,
           color:
@@ -218,7 +217,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       default:
         textStyle = TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'GreatVibes-Regular',
           fontSize: getResponsiveFontSize(context, 12),
           fontWeight: FontWeight.w400,
         );

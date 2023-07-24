@@ -7,6 +7,7 @@ class CustomButton extends StatelessWidget {
   final Color primary;
   final Color onPrimary;
   final double? buttomHight;
+  final double? buttonwidth;
   const CustomButton({
     Key? key,
     required this.text,
@@ -15,7 +16,8 @@ class CustomButton extends StatelessWidget {
     required this.sideColor,
     required this.primary,
     required this.onPrimary,
-    this.buttomHight= 50 ,
+    this.buttomHight= 50,
+    this.buttonwidth=double.infinity ,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
         child: Container(
             height: buttomHight ,
-            width: double.infinity,
+            width: buttonwidth,
             child: ElevatedButton(
               onPressed: onPressed,
               style: ElevatedButton.styleFrom(

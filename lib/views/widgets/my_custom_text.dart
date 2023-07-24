@@ -62,18 +62,18 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 4://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
-          fontSize:getResponsiveFontSize(context, 19),
+          fontFamily: 'GreatVibes',
+          fontSize:getResponsiveFontSize(context, 23),
           fontWeight: FontWeight.w400,
           color:
           // settingscontroller.isDarkMode.value
           //     ? Colors.white// Use dark mode color
-          thirdColor, // Use light mode color
+          buttonColor, // Use light mode color
         );
         break;
       case 5://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize:getResponsiveFontSize(context, 19),
           fontWeight: FontWeight.w400,
           color:
@@ -84,8 +84,8 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 6://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
-          fontSize:getResponsiveFontSize(context, 20),
+          fontFamily: 'GreatVibes',
+          fontSize:getResponsiveFontSize(context, 25),
           fontWeight: FontWeight.w400,
           color:
           // settingscontroller.isDarkMode.value
@@ -95,7 +95,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 7://head
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize: getResponsiveFontSize(context, 25),
           fontWeight: FontWeight.w700,
           color:
@@ -107,7 +107,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 8://head
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize:getResponsiveFontSize(context, 20),
           fontWeight: FontWeight.w700,
           color: Colors.white,
@@ -117,7 +117,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 9://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize:getResponsiveFontSize(context, 15),
           fontWeight: FontWeight.w400,
           color:
@@ -128,7 +128,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 10://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize:getResponsiveFontSize(context, 12),
           fontWeight: FontWeight.w400,
           color:
@@ -139,7 +139,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 11://head
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize:getResponsiveFontSize(context, 21),
           fontWeight: FontWeight.w700,
           color:
@@ -151,7 +151,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 12://head
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize: getResponsiveFontSize(context, 19),
           fontWeight: FontWeight.w700,
           color:
@@ -163,7 +163,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 13://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize: getResponsiveFontSize(context, 15),
           fontWeight: FontWeight.w400,
           color:
@@ -174,7 +174,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 14://head
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize:getResponsiveFontSize(context, 11),
           fontWeight: FontWeight.w500,
           color:
@@ -187,7 +187,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 15://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize: getResponsiveFontSize(context, 12),
           fontWeight: FontWeight.w400,
           color: Colors.white,
@@ -195,7 +195,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 16://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize:getResponsiveFontSize(context, 15),
           fontWeight: FontWeight.w400,
           color:
@@ -206,7 +206,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       case 17://Subtitle
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize:getResponsiveFontSize(context, 15),
           fontWeight: FontWeight.w400,
           color:
@@ -217,7 +217,7 @@ class MyCustomTextWidget extends StatelessWidget {
         break;
       default:
         textStyle = TextStyle(
-          fontFamily: 'GreatVibes-Regular',
+          fontFamily: 'GreatVibes',
           fontSize: getResponsiveFontSize(context, 12),
           fontWeight: FontWeight.w400,
         );

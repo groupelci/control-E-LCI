@@ -10,6 +10,7 @@ class StartedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(25),
@@ -22,8 +23,8 @@ class StartedScreen extends StatelessWidget {
                   MyCustomTextWidget(index: 3,text: 'LCI Group' ,)
                 ],
               ),
-              const SizedBox(height: 30,),
-              Image.asset('assets/images/gestion.png'),
+              const SizedBox(height: 10,),
+              Image.asset('assets/images/control.jpg'),
               MyCustomTextWidget(index:1 ,text:'Welcome!' ,),
               const SizedBox(height: 30,),
               MyCustomTextWidget(index:2 ,text:'to the Control App for E-LCI!' ,),

@@ -1,7 +1,6 @@
 import 'package:elearning/presenter/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../views/widgets/my_custom_text.dart';
 class HomeController extends GetxController {
   final RxBool showContainer1 = false.obs;

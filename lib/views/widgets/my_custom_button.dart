@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final String text;
+  final IconData? icon;
   final VoidCallback onPressed;
   final double borderRadius;
   final Color sideColor;
@@ -17,11 +18,13 @@ class CustomButton extends StatelessWidget {
     required this.primary,
     required this.onPrimary,
     this.buttomHight= 50,
-    this.buttonwidth=double.infinity ,
+    this.buttonwidth=double.infinity,
+    this.icon ,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
         child: Container(
@@ -40,11 +43,19 @@ class CustomButton extends StatelessWidget {
                 ),
 
               ),
-              child: Text(
-                text,
-                style:
-                const TextStyle(fontFamily:'GreatVibes',fontSize: 24, fontWeight: FontWeight.w700),
-              ),
+              child: Row(
+                children: [
+               icon != null ? Icon(icon): SizedBox( width: screenWidth * 0.25,),
+                SizedBox(
+                  width: screenWidth * 0.07,
+                ),
+                Text(
+                    text,
+                    style:
+                    const TextStyle(fontFamily:'GreatVibes',fontSize: 24, fontWeight: FontWeight.w700),
+                  ),
+
+              ],),
             )));
   }
 }

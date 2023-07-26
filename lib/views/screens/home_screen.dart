@@ -10,6 +10,7 @@ import '../widgets/my_custom_button.dart';
 import '../widgets/my_custom_container.dart';
 class HomeScreen extends StatelessWidget {
   final HomeController homeController = Get.put(HomeController());
+  final CourseController courseController = Get.put(CourseController());
   HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -113,8 +114,7 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 GetBuilder<CourseController>(
                                   init: CourseController(),
-                                  builder: (controller) => Obx(
-                                        () {
+                                  builder: (controller) => Obx(() {
                                       final itemCount = controller.showAllCourses.value ? controller.courseList.length : 2;
                                       return Padding(
                                         padding: const EdgeInsets.all(8),

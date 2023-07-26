@@ -43,6 +43,22 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    // Define flavor dimensions (add this block if it's not present)
+    flavorDimensions "environment"
+
+    // Create product flavors for each Firebase project (add this block if it's not present)
+    productFlavors {
+        control {
+            dimension "environment"
+            applicationId "com.example.elci_control"
+        }
+        elci {
+            dimension "environment"
+            applicationId "com.lcigroupe.elearning"
+        }
+    }
+
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.elci_control"

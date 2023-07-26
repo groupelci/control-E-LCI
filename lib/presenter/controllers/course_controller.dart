@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class CourseController extends GetxController {
@@ -20,7 +21,6 @@ class CourseController extends GetxController {
   RxBool hasNewCourses = false.obs;
   RxList lectures = [].obs;
   TextEditingController searchController = TextEditingController();
-
   @override
   void onInit() {
     super.onInit();
@@ -32,19 +32,23 @@ class CourseController extends GetxController {
   }
   Future<void> fetchCourses() async {
     try {
-      final querySnapshot = await FirebaseFirestore.instance.collection('courses').get();
+      FirebaseFirestore firestoreB = FirebaseFirestore.instanceFor(app: Firebase.app('elci'));
+      final querySnapshot = await firestoreB.collection('courses').get();
+      List<String> courseList = [];
       querySnapshot.docs.forEach((doc) {
         courseList.add(doc.id);
       });
       if (courseList.isNotEmpty) {
         selectedCourseId.value = courseList[0];
         selectedCourseName.value = courseList[0];
-        print('courses: $courseList');
+        print('Courses from projectB: $courseList');
+      } else {
+        print('No courses found in projectB.');
       }
-      await fetchSubCourses(selectedCourseId.value); // Call fetchSubCourses after updating course values
+      await fetchSubCourses(selectedCourseId.value);
       update();
     } catch (e) {
-      print('Error fetching courses: $e');
+      print('Error fetching courses from projectB: $e');
     }
   }
   Future<void> fetchSubCourses( String selectCourse) async {

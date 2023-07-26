@@ -11,14 +11,12 @@ class SplashController extends GetxController {
     Future.delayed(const Duration(seconds: 3), () {
       Widget StartScreen;
       if(token==null){
-        StartScreen= StartedScreen() ;
+        StartScreen= const StartedScreen() ;
       }
       else{
         StartScreen= BottombarScreen();
       }
       Get.off(() =>  StartScreen);
-
-
     });
   }
 }

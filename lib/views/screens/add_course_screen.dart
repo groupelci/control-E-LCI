@@ -51,7 +51,6 @@ class AddCourse extends StatelessWidget {
               ),
             ],
           ),
-
         ),
       ),
     );

@@ -32,20 +32,25 @@ class CourseController extends GetxController {
   }
   Future<void> fetchCourses() async {
     try {
-      FirebaseFirestore firestoreB = FirebaseFirestore.instanceFor(app: Firebase.app('elci'));
-      final querySnapshot = await firestoreB.collection('courses').get();
-      List<String> courseList = [];
+      print("Fetching courses..;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.");
+      FirebaseFirestore firestoreelci = FirebaseFirestore.instanceFor(app: Firebase.app('elci'));
+      final querySnapshot = await firestoreelci.collection('courses').get();
+      courseList.clear(); // Use the class-level courseList instead of creating a new one.
       querySnapshot.docs.forEach((doc) {
         courseList.add(doc.id);
       });
+      print('fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff$querySnapshot');
+      print('fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff$courseList');
+      print(courseList);
       if (courseList.isNotEmpty) {
         selectedCourseId.value = courseList[0];
         selectedCourseName.value = courseList[0];
-        print('Courses from projectB: $courseList');
+        print('Courses from elci: $courseList');
       } else {
-        print('No courses found in projectB.');
+        print('No courses found in elci.');
       }
       await fetchSubCourses(selectedCourseId.value);
+      print('object object object object objectobjectobjectobjectobjectobjectobjectobject${selectedCourseId.value}');
       update();
     } catch (e) {
       print('Error fetching courses from projectB: $e');
@@ -54,8 +59,8 @@ class CourseController extends GetxController {
   Future<void> fetchSubCourses( String selectCourse) async {
     try {
       subCourseList.clear();
-      final subcollectionsSnapshot = await FirebaseFirestore.instance
-          .collection('courses')
+      FirebaseFirestore firestoreelci = FirebaseFirestore.instanceFor(app: Firebase.app('elci'));
+      final subcollectionsSnapshot = await firestoreelci.collection('courses')
           .doc(selectCourse)
           .collection('subcourses')
           .get();
@@ -66,6 +71,7 @@ class CourseController extends GetxController {
       if (subCourseList.isNotEmpty) {
         selectedSubCourseId.value = subCourseList[0];
       }
+      print('ffffaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff$subCourseList');
       update();
     } catch (e) {
       print('Error fetching subcourses: $e');

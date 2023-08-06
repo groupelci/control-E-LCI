@@ -29,7 +29,7 @@ class CourseController extends GetxController {
     Connectivity().onConnectivityChanged.listen((result) {
       isConnected.value = (result != ConnectivityResult.none);
     });
-  }
+  }                           
   Future<void> fetchCourses() async {
     try {
       print("Fetching courses..;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.");
@@ -195,5 +195,125 @@ class CourseController extends GetxController {
         courseList.where((course) => course.toLowerCase().contains(keyword.toLowerCase())),
       );
     }
+  }
+  // Function to update a document in the "course" collection
+  Future<void> updateCollectionId(String oldCollectionId, String newCollectionId) async {
+    try {
+      await Firebase.initializeApp();
+      FirebaseFirestore firestoreelci = FirebaseFirestore.instanceFor(app: Firebase.app('elci'));
+
+      // Remove any trailing spaces from the newCollectionId
+      newCollectionId = newCollectionId.trim();
+
+      CollectionReference oldCollectionRef = firestoreelci.collection('courses').doc(oldCollectionId).collection('subcourses');
+      CollectionReference newCollectionRef = firestoreelci.collection('courses').doc(newCollectionId).collection('subcourses');
+
+      print('Old Collection Reference: $oldCollectionRef');
+      print('New Collection Reference: $newCollectionRef');
+
+      // Step 1: Copy Data
+      QuerySnapshot oldCollectionSnapshot = await oldCollectionRef.get();
+      List<QueryDocumentSnapshot> oldDocs = oldCollectionSnapshot.docs;
+
+      for (QueryDocumentSnapshot oldDocSnapshot in oldDocs) {
+        Map<String, dynamic> data = oldDocSnapshot.data() as Map<String, dynamic>;
+
+        // Get a reference to the new document
+        DocumentReference newDocRef = newCollectionRef.doc(oldDocSnapshot.id);
+
+        // Write data to the new document
+        await newDocRef.set(data);
+        print('Copied data for document ${oldDocSnapshot.id}');
+
+        // Delete the old document
+        await oldDocSnapshot.reference.delete();
+        print('Deleted old document ${oldDocSnapshot.id}');
+      }
+
+      // Step 2: Delete Old Collection Reference
+      await firestoreelci.collection('courses').doc(oldCollectionId).delete();
+      print('Old Collection ${oldCollectionId} deleted successfully');
+
+      // Fetch the updated courses and subcourses data
+      await fetchCourses();
+      await fetchSubCourses(selectedCourseId.value);
+
+      print('Collection ID updated successfully');
+    } catch (e) {
+      print('Error updating collection ID: $e');
+    }
+  }
+  // Function to delete a document from the "course" collection
+  Future<void> deleteCourse(String courseId) async {
+    try {
+      await FirebaseFirestore.instance.collection('courses').doc(courseId).delete();
+      print('Course deleted successfully');
+    } catch (e) {
+      print('Error deleting course: $e');
+    }
+  }
+  Future<void> showUpdateDialog(BuildContext context, String courseName) async {
+    TextEditingController newNameController = TextEditingController();
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Update Course'),
+          content: TextField(
+            controller: newNameController,
+            decoration: InputDecoration(labelText: 'New Course Name'),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () async {
+                String newName = newNameController.text;
+                if (newName.isNotEmpty) {
+                  await updateCollectionId(courseName, newName);
+                  Navigator.pop(context);
+                }
+              },
+              child: Text('Update'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  Future<void> showDeleteDialog(BuildContext context, String courseName) async {
+    bool confirmDelete = false;
+
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Delete Course'),
+          content: Text('Are you sure you want to delete the course?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () async {
+                confirmDelete = true;
+                if (confirmDelete) {
+                  await deleteCourse(courseName);
+                  Navigator.pop(context);
+                }
+              },
+              child: Text('Delete'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

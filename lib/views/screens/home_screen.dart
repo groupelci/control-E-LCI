@@ -9,16 +9,13 @@ import '../../presenter/controllers/home_controller.dart';
 import '../widgets/color.dart';
 import '../widgets/my_custom_button.dart';
 import '../widgets/my_custom_container.dart';
-
 class HomeScreen extends StatelessWidget {
   final HomeController homeController = Get.put(HomeController());
   final CourseController courseController = Get.put(CourseController());
-
   @override
   Widget build(BuildContext context) {
     print('Course List Length: ${courseController.courseList.length}');
     double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -77,12 +74,49 @@ class HomeScreen extends StatelessWidget {
                       ListView.builder(
                         itemCount: courseController.courseList.length,
                         itemBuilder: (context, index) {
-                          String courseName =
-                              courseController.courseList[index];
-                          print(
-                              'hadi ranaaaaaaaaaaaaaaaaaa f home screen${courseController.courseList}');
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                          String courseName = courseController.courseList[index];
+                          return Dismissible(
+                            key: Key(courseName), // Unique key for each item
+                            direction: DismissDirection.horizontal, // Set the swipe direction
+                            background: Container(
+                              color: Colors.red, // Background color when swiping to delete
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: const [
+                                    SizedBox(width: 20),
+                                    Icon(Icons.delete, color: Colors.white),
+                                    SizedBox(width: 10),
+                                    Text("Delete", style: TextStyle(color: Colors.white)),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            secondaryBackground: Container(
+                              color: primaryColor, // Background color when swiping to modify
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: const [
+                                    Icon(Icons.edit, color: Colors.white),
+                                    SizedBox(width: 10),
+                                    Text("Modify", style: TextStyle(color: Colors.white)),
+                                    SizedBox(width: 20),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            onDismissed: (direction) {
+                              if (direction == DismissDirection.endToStart) {
+                                // Delete operation
+                                courseController.showUpdateDialog(context, courseName);
+                              } else if (direction == DismissDirection.startToEnd) {
+                                // Modify operation
+                                courseController.showDeleteDialog(context, courseName);
+                              }
+                            },
                             child: Container(
                               margin: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
@@ -99,9 +133,8 @@ class HomeScreen extends StatelessWidget {
                               child: InkWell(
                                 onTap: () async {
                                   courseController.setGridTapped(true, index);
-                                  await courseController
-                                      .fetchSubCourses(courseName);
-                                  Get.to(() => SubCourses(index1: index,));
+                                  await courseController.fetchSubCourses(courseName);
+                                  Get.to(() => SubCourses(index1: index));
                                 },
                                 child: Column(
                                   children: [
@@ -110,8 +143,7 @@ class HomeScreen extends StatelessWidget {
                                       child: Container(
                                         alignment: Alignment.centerLeft,
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                                           children: [
                                             Expanded(
                                               child: Text(
@@ -127,25 +159,21 @@ class HomeScreen extends StatelessWidget {
                                                 overflow: TextOverflow.ellipsis,
                                               ),
                                             ),
-                                            Obx(() => courseController
-                                                        .isGridTapped.value &&
-                                                    courseController
-                                                            .currentGridTappedIndex
-                                                            .value ==
-                                                        index
+                                            Obx(() => courseController.isGridTapped.value &&
+                                                courseController.currentGridTappedIndex.value ==
+                                                    index
                                                 ? const SizedBox(
-                                                    width: 15,
-                                                    height: 15,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      color: buttonColor,
-                                                      strokeWidth: 2.0,
-                                                    ),
-                                                  )
+                                              width: 15,
+                                              height: 15,
+                                              child: CircularProgressIndicator(
+                                                color: buttonColor,
+                                                strokeWidth: 2.0,
+                                              ),
+                                            )
                                                 : const Icon(
-                                                    Icons.arrow_circle_right,
-                                                    color: buttonColor,
-                                                  )),
+                                              Icons.arrow_circle_right,
+                                              color: buttonColor,
+                                            )),
                                           ],
                                         ),
                                       ),
